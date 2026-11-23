@@ -1,47 +1,56 @@
 import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { productsData } from '../data/products'
+import { Link, useLocation } from 'react-router-dom'
+import { products } from '../data/site'
+import { Check, Frame, Status } from '../components/Cards'
+import '../site.css'
 import './Products.css'
 
 function Products() {
+  const { hash } = useLocation()
+
   useEffect(() => {
-    document.title = 'In the Lab - Hiro Labs'
+    document.title = 'products · hiro labs'
   }, [])
 
-  return (
-    <div className="products">
-      <div className="products-header">
-        <div className="container">
-          <h1>In the Lab</h1>
-          <p>Independent software initiatives Hiro Labs is actively building and exploring</p>
-        </div>
-      </div>
+  useEffect(() => {
+    if (!hash) return
+    const el = document.getElementById(hash.slice(1))
+    if (el) requestAnimationFrame(() => el.scrollIntoView({ behavior: 'smooth', block: 'center' }))
+  }, [hash])
 
-      <div className="products-content">
-        <div className="container">
-          <div className="products-grid">
-            {productsData.map(product => (
-              <Link to={`/products/${product.id}`} key={product.id} className="product-card">
-                <div className="product-image">
-                  {product.comingSoon && <span className="coming-soon-card-badge">Coming Soon</span>}
-                  {product.logo ? (
-                    <img src={product.logo} alt={product.name} className="product-logo" />
-                  ) : product.image ? (
-                    <img src={product.image} alt={product.name} />
-                  ) : (
-                    <div className="product-placeholder">{product.name[0]}</div>
-                  )}
-                </div>
-                <div className="product-info">
-                  <div className="product-tagline">{product.tagline}</div>
-                  <h3>{product.name}</h3>
-                  <p>{product.description}</p>
-                </div>
-              </Link>
-            ))}
-          </div>
+  return (
+    <div className="hl-page">
+      <section className="hl-page-head">
+        <div className="hl-w">
+          <span className="hl-eye">in the lab</span>
+          <h1 className="hl-disp hl-page-h">our products</h1>
+          <p className="hl-lede">software we build, use every day, and put in front of real customers. each one started as a problem we had ourselves.</p>
         </div>
-      </div>
+      </section>
+
+      <section>
+        <div className="hl-w">
+          {products.map((p, i) => (
+            <article key={p.id} id={p.id} className={`hl-prow ${i % 2 ? 'flip' : ''}`}>
+              <div className="hl-prow-m"><div className="hl-panel"><Frame src={p.image} alt={`${p.name} screenshot`} eager={i === 0} /></div></div>
+              <div className="hl-prow-t">
+                <Status tone={p.tone}>{p.status}</Status>
+                <h2 className="hl-prow-n">{p.name}</h2>
+                <p className="hl-prow-l">{p.line}</p>
+                <ul className="hl-prow-pts">{p.points.map((pt) => <li key={pt} className="hl-li"><Check />{pt}</li>)}</ul>
+                <div className="hl-chips">{p.stack.map((s) => <span key={s} className="hl-chip">{s}</span>)}</div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="hl-sec">
+        <div className="hl-w hl-cta">
+          <h2 className="hl-disp">want something like this<br /><span className="hl-accent">for your business?</span></h2>
+          <Link className="hl-btn hl-pri" to="/contact">start a project</Link>
+        </div>
+      </section>
     </div>
   )
 }

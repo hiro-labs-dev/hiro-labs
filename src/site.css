@@ -1,0 +1,60 @@
+/* Shared building blocks for the marketing pages (2026-11 redesign). */
+
+.hl-w { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+.hl-eye { font-family: var(--font-mono); font-size: 12px; letter-spacing: .12em; color: var(--accent-text); }
+.hl-disp { font-family: var(--font-display); font-weight: 900; letter-spacing: -.005em; line-height: .92; color: var(--text-primary); }
+.hl-sec { padding: 96px 0; border-top: 1px solid var(--rule); }
+.hl-sec.alt, .hl-alt { background: var(--bg-secondary); }
+.hl-h2 { margin: 14px 0 0; font-family: var(--font-display); font-weight: 900; font-size: 52px; line-height: .95; color: var(--text-primary); }
+.hl-lede { margin: 16px 0 0; max-width: 620px; font-size: 16px; line-height: 1.65; color: var(--text-secondary); }
+.hl-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px 40px; flex-wrap: wrap; }
+.hl-accent { color: var(--accent); }
+
+.hl-btn { display: inline-flex; align-items: center; gap: 10px; height: 48px; padding: 0 24px; font: 600 15px var(--font-sans); text-decoration: none; cursor: pointer; border: 0; }
+.hl-pri { background: var(--accent); color: var(--bg-primary); clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px); }
+.hl-pri:hover { background: var(--accent-hi); color: var(--bg-primary); }
+.hl-ghost { background: transparent; border: 1px solid var(--border-strong); color: var(--text-primary); }
+.hl-ghost:hover { border-color: var(--accent-text); }
+.hl-btn:focus-visible, .hl-card:focus-visible, .hl-navl:focus-visible { outline: 2px solid var(--accent-text); outline-offset: 3px; }
+
+.hl-panel { display: block; background: linear-gradient(160deg, #151b22, #10151b); border: 1px solid var(--border-color); clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px); color: inherit; text-decoration: none; }
+a.hl-panel { transition: border-color .2s; }
+a.hl-panel:hover { border-color: #33424f; }
+a.hl-panel:hover .hl-shot { transform: scale(1.015); }
+.hl-frame { overflow: hidden; border-bottom: 1px solid var(--border-color); }
+.hl-shot { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top center; transition: transform .4s ease; }
+.hl-bar { display: flex; align-items: center; gap: 6px; height: 28px; padding: 0 12px; background: var(--bg-secondary); border-bottom: 1px solid var(--border-color); }
+.hl-bar i { width: 8px; height: 8px; border-radius: 50%; background: var(--border-strong); display: inline-block; }
+
+.hl-chip { display: inline-flex; align-items: center; gap: 6px; height: 24px; padding: 0 10px; border: 1px solid var(--border-strong); font: 500 11px var(--font-mono); letter-spacing: .06em; color: var(--text-secondary); white-space: nowrap; }
+.hl-chip b { width: 6px; height: 6px; border-radius: 50%; background: var(--accent-green); }
+.hl-chip.soon b { background: var(--accent-yellow); }
+.hl-chips { display: flex; gap: 8px; flex-wrap: wrap; }
+.hl-tag { font: 500 11px var(--font-mono); color: var(--text-tertiary); }
+
+.hl-card-body { padding: 20px 22px 24px; }
+.hl-card-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.hl-pn { font-family: var(--font-display); font-weight: 800; font-size: 26px; line-height: 1; color: var(--text-primary); }
+.hl-pd { margin: 6px 0 0; font-size: 14px; line-height: 1.55; color: var(--text-secondary); }
+
+.hl-li { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--text-body); line-height: 1.5; list-style: none; }
+.hl-li svg { flex: none; margin-top: 3px; color: var(--accent); }
+
+.hl-cta { display: flex; flex-wrap: wrap; gap: 32px; align-items: center; justify-content: space-between; }
+.hl-cta h2 { margin: 0; font-size: 56px; }
+
+@media (max-width: 900px) {
+  .hl-w { padding: 0 24px; }
+  .hl-sec { padding: 72px 0; }
+  .hl-h2 { font-size: 42px; }
+  .hl-cta h2 { font-size: 44px; }
+}
+@media (max-width: 520px) {
+  .hl-w { padding: 0 16px; }
+  .hl-h2 { font-size: 36px; }
+  .hl-cta h2 { font-size: 38px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .hl-shot { transition: none; }
+}

@@ -1,57 +1,35 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { projectsData } from './projectsData'
-import './Projects.css'
-
-const projectsCategories = Object.entries(projectsData)
+import { clients } from '../data/site'
+import { ClientCard } from '../components/Cards'
+import '../site.css'
+import './Products.css'
+import './Home.css'
 
 function Projects() {
   useEffect(() => {
-    document.title = 'Work - Hiro Labs'
+    document.title = 'client work · hiro labs'
   }, [])
 
   return (
-    <div className="projects">
-      <div className="projects-header">
-        <div className="container">
-          <h1>Work</h1>
-          <p>Systems built for durability and scale</p>
+    <div className="hl-page">
+      <section className="hl-page-head">
+        <div className="hl-w">
+          <span className="hl-eye">client work</span>
+          <h1 className="hl-disp hl-page-h">built for clients</h1>
+          <p className="hl-lede">platforms we designed, built and shipped for the people who run them.</p>
+          <div className="hl-grid2">
+            {clients.map((c) => <ClientCard key={c.id} c={c} />)}
+          </div>
         </div>
-      </div>
-
-      <div className="projects-content">
-        <div className="container">
-          {projectsCategories.map(([category, projects]) => (
-            <section key={category} className="project-category">
-              <h2 className="category-title">{category}</h2>
-              <div className="projects-grid">
-                {projects.map(project => (
-                  <ProjectCard key={project.id} project={project} />
-                ))}
-              </div>
-            </section>
-          ))}
+      </section>
+      <section className="hl-sec" style={{ marginTop: 56 }}>
+        <div className="hl-w hl-cta">
+          <h2 className="hl-disp">have something<br /><span className="hl-accent">to build?</span></h2>
+          <Link className="hl-btn hl-pri" to="/contact">start a project</Link>
         </div>
-      </div>
+      </section>
     </div>
-  )
-}
-
-function ProjectCard({ project }) {
-  const getInitials = (name) => name.split(' ').map(word => word[0]).join('').toUpperCase().slice(0, 2)
-
-  return (
-    <Link to={`/projects/${project.id}`} className="project-card">
-      <div className="project-image">
-        {project.image ? <img src={project.image} alt={project.name} /> : <div className="project-placeholder">{getInitials(project.name)}</div>}
-      </div>
-      <div className="project-info">
-        <div className="project-tagline">{project.tagline}</div>
-        <h3>{project.name}</h3>
-        <p className="project-description">{project.description}</p>
-        <div className="project-tech">{project.tech}</div>
-      </div>
-    </Link>
   )
 }
 

@@ -1,141 +1,104 @@
 import { useState, useEffect } from 'react'
-import { ArrowRight, Check, Github, Linkedin, Mail } from 'lucide-react'
+import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react'
+import { Check } from '../components/Cards'
+import '../site.css'
+import './Products.css'
 import './Contact.css'
 
 const firstSteps = [
-  'Share what you are trying to build, improve, or refresh — including a website.',
-  'We will reply with a few focused questions and an honest point of view.',
-  'If there is a fit, we can set up a short call to talk through the next step.',
+  'share what you want to build, improve or refresh, websites included.',
+  'we reply with a few focused questions and an honest point of view.',
+  "if it's a fit, we set up a short call to talk through the next step.",
 ]
+
+const validate = (name, value) => {
+  switch (name) {
+    case 'name': return value.trim().length < 2 ? 'please enter your name' : ''
+    case 'email': return !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ? 'please enter a valid email' : ''
+    case 'project': return !value ? 'please pick the closest fit' : ''
+    case 'message': return value.trim().length < 10 ? 'a sentence or two is plenty' : ''
+    default: return ''
+  }
+}
 
 function Contact() {
   const [errors, setErrors] = useState({})
   const [touched, setTouched] = useState({})
 
   useEffect(() => {
-    document.title = 'Contact - Hiro Labs'
+    document.title = 'start a project · hiro labs'
   }, [])
 
-  const validateField = (name, value) => {
-    switch (name) {
-      case 'name':
-        return value.trim().length < 2 ? 'Name must be at least 2 characters' : ''
-      case 'email':
-        return !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ? 'Please enter a valid email' : ''
-      case 'project':
-        return !value ? 'Please select a project type' : ''
-      case 'message':
-        return value.trim().length < 10 ? 'Message must be at least 10 characters' : ''
-      default:
-        return ''
-    }
-  }
-
-  const handleBlur = (e) => {
+  const onBlur = (e) => {
     const { name, value } = e.target
-    setTouched({ ...touched, [name]: true })
-    setErrors({ ...errors, [name]: validateField(name, value) })
+    setTouched((t) => ({ ...t, [name]: true }))
+    setErrors((x) => ({ ...x, [name]: validate(name, value) }))
   }
-
-  const handleChange = (e) => {
+  const onChange = (e) => {
     const { name, value } = e.target
-    if (touched[name]) {
-      setErrors({ ...errors, [name]: validateField(name, value) })
-    }
+    if (touched[name]) setErrors((x) => ({ ...x, [name]: validate(name, value) }))
   }
+  const err = (n) => touched[n] && errors[n] ? <span className="hl-err" id={`${n}-err`}>{errors[n]}</span> : null
 
   return (
-    <div className="contact">
-      <header className="contact-header">
-        <div className="container">
-          <p className="contact-eyebrow">Start a conversation</p>
-          <h1>Let&apos;s make your next website or digital tool work harder.</h1>
-          <p className="contact-lede">
-            Whether you need a website that better represents your business, a new product, or an improvement
-            to an existing system, Hiro Labs can help you find a practical path forward.
-          </p>
+    <div className="hl-page">
+      <section className="hl-page-head">
+        <div className="hl-w">
+          <span className="hl-eye">start a project</span>
+          <h1 className="hl-disp hl-page-h">have something <span className="hl-accent">to build?</span></h1>
+          <p className="hl-lede">a new product, a website that better represents your business, or a fix to a system you already have. tell us where you are and we&apos;ll find a practical path forward.</p>
         </div>
-      </header>
+      </section>
 
-      <main className="contact-content">
-        <div className="container">
-          <div className="contact-grid">
-            <section className="contact-info" aria-labelledby="contact-intro-title">
-              <p className="section-label">A straightforward first step</p>
-              <h2 id="contact-intro-title">Start with the context.</h2>
-              <p>
-                A useful note does not need to be a polished brief. Tell us where you are now, what is getting
-                in the way, and what a better outcome would look like. We will take it from there.
-              </p>
-
-              <div className="contact-steps" aria-label="What happens next">
-                {firstSteps.map((step) => (
-                  <p key={step}><Check size={18} aria-hidden="true" />{step}</p>
-                ))}
-              </div>
-
-              <div className="contact-methods">
-                <a href="mailto:admin@hiro-labs.dev" className="contact-method">
-                  <Mail size={22} aria-hidden="true" />
-                  <span>admin@hiro-labs.dev</span>
-                </a>
-                <a href="https://github.com/hiro-labs-dev" target="_blank" rel="noopener noreferrer" className="contact-method">
-                  <Github size={22} aria-hidden="true" />
-                  <span>GitHub</span>
-                </a>
-                <a href="https://www.linkedin.com/in/roddy-hiro" target="_blank" rel="noopener noreferrer" className="contact-method">
-                  <Linkedin size={22} aria-hidden="true" />
-                  <span>LinkedIn</span>
-                </a>
-              </div>
-            </section>
-
-            <form className="contact-form" action="https://formspree.io/f/xlgwoaez" method="POST">
-              <div className="form-intro">
-                <h2>What are you working on?</h2>
-                <p>A few details are enough to get the conversation started.</p>
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="name">Name</label>
-                <input type="text" id="name" name="name" required placeholder="Your name" onBlur={handleBlur} onChange={handleChange} />
-                {touched.name && errors.name && <span className="error">{errors.name}</span>}
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="email">Email</label>
-                <input type="email" id="email" name="email" required placeholder="you@company.com" onBlur={handleBlur} onChange={handleChange} />
-                {touched.email && errors.email && <span className="error">{errors.email}</span>}
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="project">What kind of work is this?</label>
-                <select id="project" name="project" required onBlur={handleBlur} onChange={handleChange}>
-                  <option value="">Select the closest fit</option>
-                  <option value="mvp">New product or MVP</option>
-                  <option value="webapp">Customer-facing web application</option>
-                  <option value="internal-tool">Internal tool or workflow</option>
-                  <option value="integration">Integration, API, or automation</option>
-                  <option value="modernization">Existing system improvement or migration</option>
-                  <option value="website">Marketing or corporate website</option>
-                  <option value="other">Something else</option>
-                </select>
-                {touched.project && errors.project && <span className="error">{errors.project}</span>}
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="message">A little about the situation</label>
-                <textarea id="message" name="message" rows="6" required placeholder="What are you trying to achieve, and what is standing in the way?" onBlur={handleBlur} onChange={handleChange} />
-                {touched.message && errors.message && <span className="error">{errors.message}</span>}
-              </div>
-
-              <button type="submit" className="submit-btn">
-                Send your note <ArrowRight size={18} aria-hidden="true" />
-              </button>
-            </form>
+      <section className="hl-contact-sec">
+        <div className="hl-w hl-contact-grid">
+          <div className="hl-contact-info">
+            <span className="hl-eye">a straightforward first step</span>
+            <h2 className="hl-h2" style={{ fontSize: 40 }}>start with the context</h2>
+            <p className="hl-lede" style={{ marginTop: 0 }}>a useful note doesn&apos;t need to be a polished brief. tell us where you are now, what&apos;s in the way, and what a better outcome looks like.</p>
+            <ul className="hl-contact-steps">{firstSteps.map((s) => <li key={s} className="hl-li"><Check />{s}</li>)}</ul>
+            <div className="hl-contact-methods">
+              <a href="mailto:roddy@hiro-labs.dev"><Mail size={18} aria-hidden="true" />roddy@hiro-labs.dev</a>
+              <a href="https://github.com/hiro-labs-dev" target="_blank" rel="noopener noreferrer"><Github size={18} aria-hidden="true" />github</a>
+              <a href="https://www.linkedin.com/in/roddy-hiro" target="_blank" rel="noopener noreferrer"><Linkedin size={18} aria-hidden="true" />linkedin</a>
+            </div>
           </div>
+
+          <form className="hl-panel hl-form" action="https://formspree.io/f/xlgwoaez" method="POST">
+            <h2>what are you working on?</h2>
+            <div className="hl-field">
+              <label htmlFor="name">name</label>
+              <input type="text" id="name" name="name" required autoComplete="name" onBlur={onBlur} onChange={onChange} aria-describedby={errors.name ? 'name-err' : undefined} />
+              {err('name')}
+            </div>
+            <div className="hl-field">
+              <label htmlFor="email">email</label>
+              <input type="email" id="email" name="email" required autoComplete="email" placeholder="you@company.com" onBlur={onBlur} onChange={onChange} aria-describedby={errors.email ? 'email-err' : undefined} />
+              {err('email')}
+            </div>
+            <div className="hl-field">
+              <label htmlFor="project">what kind of work is this?</label>
+              <select id="project" name="project" required onBlur={onBlur} onChange={onChange} defaultValue="">
+                <option value="">pick the closest fit</option>
+                <option value="website">website</option>
+                <option value="webapp">web app or platform</option>
+                <option value="mvp">new product or mvp</option>
+                <option value="ai">ai tool or automation</option>
+                <option value="internal-tool">internal tool or workflow</option>
+                <option value="modernization">improve or migrate an existing system</option>
+                <option value="other">something else</option>
+              </select>
+              {err('project')}
+            </div>
+            <div className="hl-field">
+              <label htmlFor="message">a little about the situation</label>
+              <textarea id="message" name="message" rows="6" required placeholder="what are you trying to achieve, and what's standing in the way?" onBlur={onBlur} onChange={onChange} />
+              {err('message')}
+            </div>
+            <button type="submit" className="hl-btn hl-pri" style={{ alignSelf: 'flex-start' }}>send your note <ArrowRight size={18} aria-hidden="true" /></button>
+          </form>
         </div>
-      </main>
+      </section>
     </div>
   )
 }

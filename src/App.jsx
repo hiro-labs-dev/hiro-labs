@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation, useParams } from 'react-router-dom'
 import { useEffect } from 'react'
 import Navigation from './components/Navigation'
 import Footer from './components/Footer'
@@ -6,9 +6,6 @@ import Home from './pages/Home'
 import Projects from './pages/Projects'
 import ProjectDetail from './pages/ProjectDetail'
 import Products from './pages/Products'
-import ProductDetail from './pages/ProductDetail'
-import Services from './pages/Services'
-import About from './pages/About'
 import Contact from './pages/Contact'
 import NotFound from './pages/NotFound'
 import NIRoadmap from './pages/NIRoadmap'
@@ -21,14 +18,25 @@ import ServiceAgreement from './pages/ServiceAgreement'
 import ITSDemo from './pages/ITSDemo'
 import LOrdinateur from './pages/LOrdinateur'
 import './App.css'
+import './site.css'
 
 function ScrollToTop() {
-  const { pathname } = useLocation()
+  const { pathname, hash } = useLocation()
 
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [pathname])
+    if (!hash) window.scrollTo(0, 0)
+  }, [pathname, hash])
 
+  return null
+}
+
+function ProductRedirect() {
+  const { id } = useParams()
+  return <Navigate to={`/products#${id}`} replace />
+}
+
+function ExternalRedirect({ to }) {
+  useEffect(() => { window.location.replace(to) }, [to])
   return null
 }
 
@@ -67,9 +75,11 @@ function AppLayout() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/projects/:id" element={<ProjectDetail />} />
           <Route path="/products" element={<Products />} />
-          <Route path="/products/:id" element={<ProductDetail />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/about" element={<About />} />
+          <Route path="/products/:id" element={<ProductRedirect />} />
+          <Route path="/services" element={<Navigate to="/#services" replace />} />
+          <Route path="/about" element={<Navigate to="/#about" replace />} />
+          <Route path="/work" element={<Navigate to="/projects" replace />} />
+          <Route path="/resume" element={<ExternalRedirect to="https://roddy.hiro-labs.dev" />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
