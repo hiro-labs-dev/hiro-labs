@@ -21,6 +21,18 @@
   letter-spacing: -0.02em;
 }
 
+.products-header h1::before {
+  content: 'Hiro Labs R&D';
+  display: block;
+  margin-bottom: 12px;
+  color: var(--accent-blue);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
 .products-header p {
   font-size: 16px;
   color: var(--text-secondary);
@@ -116,7 +128,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: var(--text-tertiary);
+  color: var(--accent-blue);
   margin-bottom: 12px;
   font-family: var(--font-mono);
 }

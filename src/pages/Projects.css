@@ -21,6 +21,18 @@
   letter-spacing: -0.02em;
 }
 
+.projects-header h1::before {
+  content: 'Selected work';
+  display: block;
+  margin-bottom: 12px;
+  color: var(--accent-blue);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
 .projects-header p {
   font-size: 16px;
   color: var(--text-secondary);
@@ -47,7 +59,7 @@
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 40px;
-  color: var(--text-primary);
+  color: var(--accent-blue);
   letter-spacing: -0.01em;
 }
 

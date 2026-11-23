@@ -9,23 +9,24 @@ function Footer() {
       <div className="footer-container">
         <div className="footer-content">
           <div className="footer-brand">
-            <h3>Roddy Brown</h3>
-            <p>I design the infrastructure modern companies grow on</p>
+            <h3>Hiro Labs</h3>
+            <p>Founder-led software studio for customer-facing systems and automation</p>
           </div>
 
           <div className="footer-links">
             <div className="footer-section">
               <h4>Navigation</h4>
               <a href="/">Home</a>
-              <a href="/projects">Projects</a>
-              <a href="/products">Products</a>
+              <a href="/projects">Work</a>
+              <a href="/products">In the Lab</a>
+              <a href="/services">Services</a>
               <a href="/about">About</a>
               <a href="/contact">Contact</a>
             </div>
 
             <div className="footer-section">
               <h4>Connect</h4>
-              <a href="mailto:roddydevelops@gmail.com">
+              <a href="mailto:admin@hiro-labs.dev">
                 <Mail size={16} />
                 Email
               </a>
@@ -33,7 +34,7 @@ function Footer() {
                 <Github size={16} />
                 GitHub
               </a>
-              <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.linkedin.com/in/roddy-hiro" target="_blank" rel="noopener noreferrer">
                 <Linkedin size={16} />
                 LinkedIn
               </a>
@@ -42,7 +43,7 @@ function Footer() {
         </div>
 
         <div className="footer-bottom">
-          <p>&copy; {currentYear} Roddy Brown. All rights reserved.</p>
+          <p>&copy; {currentYear} Hiro Labs. All rights reserved.</p>
           <p>Built with React + Vite</p>
         </div>
       </div>

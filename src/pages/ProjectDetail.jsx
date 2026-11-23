@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { ArrowLeft, ChevronLeft, ChevronRight } from 'lucide-react'
-import { projectsData } from './Projects'
+import { projectsData } from './projectsData'
 import './ProjectDetail.css'
 
 function ProjectDetail() {
@@ -18,10 +18,9 @@ function ProjectDetail() {
   ] : []
 
   useEffect(() => {
-    if (project) document.title = `${project.name} - hiro labs`
+    if (project) document.title = `${project.name} - Hiro Labs`
   }, [project])
 
-  useEffect(() => { setCurrentSlide(0) }, [id])
 
   if (!project) {
     return (

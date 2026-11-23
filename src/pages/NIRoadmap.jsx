@@ -203,9 +203,6 @@ export default function NIRoadmap() {
     }
   }, [activePhase, currentBudget])
 
-  const isFeatureIncluded = useCallback((feature) => {
-    return feature.phase <= currentBudget.maxPhase
-  }, [currentBudget])
 
   const filteredFeatures = useMemo(() => {
     let features = FEATURES
@@ -230,8 +227,6 @@ export default function NIRoadmap() {
       features: sortedFeatures.filter(f => f.phase === id),
     }))
   }, [sortedFeatures])
-
-  const phaseWidths = [15, 15, 20, 20, 20, 10] // percentage widths for timeline segments
 
   if (!authorized) return <AccessGate onAccess={() => setAuthorized(true)} />
 

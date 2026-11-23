@@ -47,33 +47,35 @@ const servicesData = [
   },
 ]
 
-const colorOptions = [
-  { name: 'Cyan', value: '#06b6d4' },
-  { name: 'Teal', value: '#14b8a6' },
-  { name: 'Aqua', value: '#00d4aa' },
-  { name: 'Turquoise', value: '#2dd4bf' },
-  { name: 'Sky', value: '#0ea5e9' },
-  { name: 'Ocean', value: '#0891b2' },
-  { name: 'Mint', value: '#5eead4' },
-  { name: 'Seafoam', value: '#2dd4bf' },
-]
-
 function Services() {
   useEffect(() => {
-    document.title = 'Services - Roddy Brown'
+    document.title = 'Services - Hiro Labs'
   }, [])
 
   return (
     <div className="services" style={{ '--service-accent': '#14b8a6' }}>
       <div className="services-header">
         <div className="container">
-          <h1>What I Build</h1>
-          <p>Infrastructure and systems designed for durability</p>
+          <h1>Services</h1>
+          <p>Technical depth, scoped to what the project actually needs</p>
         </div>
       </div>
 
       <div className="services-content">
         <div className="container">
+          <section className="services-intro">
+            <h2>How we work</h2>
+            <p>
+              We start with the outcome you need, then shape the scope, technical approach, and delivery plan
+              around it. The goal is to build something useful, maintainable, and clear enough that your team
+              can keep moving after launch.
+            </p>
+            <p>
+              That usually means the right mix of product thinking, clean implementation, and practical
+              integrations — from MVPs and custom web apps to APIs, automation, CMS sites, and infrastructure.
+            </p>
+          </section>
+
           <div className="services-grid">
             {servicesData.map((service, index) => (
               <ServiceCard key={index} service={service} />

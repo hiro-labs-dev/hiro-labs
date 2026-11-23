@@ -53,15 +53,15 @@ function ProductDetail() {
   const product = productsData.find(p => p.id === id)
 
   useEffect(() => {
-    document.title = product ? `${product.name} - hiro labs` : 'Product Not Found - hiro labs'
+    document.title = product ? `${product.name} - Hiro Labs` : 'Initiative Not Found - Hiro Labs'
   }, [product])
 
   if (!product) {
     return (
       <div className="product-detail not-found">
         <div className="container">
-          <h1>Product not found</h1>
-          <Link to="/products">Back to Products</Link>
+          <h1>Initiative not found</h1>
+          <Link to="/products">Back to In the Lab</Link>
         </div>
       </div>
     )
@@ -71,7 +71,7 @@ function ProductDetail() {
     <div className="product-detail">
       <div className="product-detail-hero">
         <div className="container">
-          <Link to="/products" className="back-link"><ArrowLeft size={18} /> All Products</Link>
+          <Link to="/products" className="back-link"><ArrowLeft size={18} /> In the Lab</Link>
           {product.comingSoon && <span className="coming-soon-badge">Coming Soon</span>}
           <div className="product-detail-title">
             {product.logo && <img src={product.logo} alt={product.name} className="product-detail-logo" />}
@@ -112,7 +112,7 @@ function ProductDetail() {
           )}
 
           <section className="product-section">
-            <h2>What You Get</h2>
+            <h2>What It Does</h2>
             <div className="product-features-grid">
               {product.features.map((f, i) => (
                 <div key={i} className="product-feature-card">

@@ -20,6 +20,18 @@
   margin-bottom: 16px;
 }
 
+.services-header h1::before {
+  content: 'What we do';
+  display: block;
+  margin-bottom: 12px;
+  color: var(--accent-blue);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
 .services-header p {
   font-size: 18px;
   color: var(--text-secondary);
@@ -32,6 +44,24 @@
 .container {
   max-width: 1200px;
   margin: 0 auto;
+}
+
+.services-intro {
+  max-width: 780px;
+  margin-bottom: 48px;
+}
+
+.services-intro h2 {
+  font-size: 28px;
+  margin-bottom: 16px;
+  color: var(--accent-blue);
+}
+
+.services-intro p {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 16px;
 }
 
 .services-grid {

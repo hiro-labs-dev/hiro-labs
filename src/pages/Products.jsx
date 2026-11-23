@@ -5,15 +5,15 @@ import './Products.css'
 
 function Products() {
   useEffect(() => {
-    document.title = 'Products - hiro labs'
+    document.title = 'In the Lab - Hiro Labs'
   }, [])
 
   return (
     <div className="products">
       <div className="products-header">
         <div className="container">
-          <h1>Products</h1>
-          <p>Tools and platforms we've built, owned, and ready to use</p>
+          <h1>In the Lab</h1>
+          <p>Independent software initiatives Hiro Labs is actively building and exploring</p>
         </div>
       </div>
 

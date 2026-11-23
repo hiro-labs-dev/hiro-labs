@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 const c = {
   bg: '#071013',
@@ -373,11 +373,7 @@ const views = { dashboard: DashboardView, inspections: InspectionsView, clients:
 
 export default function KiteDashboardLive() {
   const [page, setPage] = useState('dashboard')
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => { setMounted(true) }, [])
-  useEffect(() => { setMounted(false); const t = setTimeout(() => setMounted(true), 50); return () => clearTimeout(t) }, [page])
-
+  const [mounted] = useState(true)
   const View = views[page]
   let currentGroup = null
 
@@ -395,7 +391,6 @@ export default function KiteDashboardLive() {
         <nav style={{ flex: 1, padding: '8px 6px', display: 'flex', flexDirection: 'column', gap: 1, overflowY: 'auto' }}>
           {navItems.map(item => {
             const showGroup = item.group && item.group !== currentGroup
-            if (item.group) currentGroup = item.group
             return (
               <div key={item.id}>
                 {showGroup && <div style={{ fontSize: 9, fontWeight: 600, color: 'rgba(162,174,187,0.5)', textTransform: 'uppercase', letterSpacing: 1, padding: '8px 10px 3px', marginTop: 4 }}>{item.group}</div>}

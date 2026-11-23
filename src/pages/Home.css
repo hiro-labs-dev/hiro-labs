@@ -16,7 +16,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.02) 0%, transparent 50%);
+  background: radial-gradient(circle at 20% 50%, rgba(20, 184, 166, 0.08) 0%, transparent 50%);
   pointer-events: none;
 }
 
@@ -29,9 +29,10 @@
 
 .hero-label {
   font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  color: var(--text-tertiary);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-blue);
   margin-bottom: 24px;
 }
 
@@ -86,13 +87,14 @@
 }
 
 .btn-primary {
-  background: transparent;
-  color: var(--text-primary);
-  border-color: var(--border-color);
+  background: var(--accent-blue);
+  color: var(--bg-primary);
+  border-color: var(--accent-blue);
 }
 
 .btn-primary:hover {
-  border-color: var(--accent-blue);
+  background: #0f9f90;
+  border-color: #0f9f90;
   transform: translateY(-1px);
 }
 
@@ -118,20 +120,116 @@
   margin: 0 auto;
 }
 
-.philosophy h2 {
-  font-size: 42px;
-  font-weight: 600;
-  margin-bottom: 32px;
-  letter-spacing: -0.02em;
-  max-width: 700px;
+.section-intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 48px;
+  margin-bottom: 56px;
 }
 
-.philosophy p {
-  font-size: 18px;
+.section-eyebrow {
+  display: block;
+  margin-bottom: 14px;
+  color: var(--accent-blue);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.section-intro h2 {
+  font-size: 42px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.section-intro > p {
+  max-width: 410px;
+  margin: 0;
   color: var(--text-secondary);
-  line-height: 1.8;
-  margin-bottom: 20px;
-  max-width: 700px;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.process-intro {
+  display: block;
+}
+
+.process-intro > p {
+  max-width: 560px;
+  margin-top: 18px;
+}
+
+.process-grid,
+.capability-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.capability-card,
+.process-card {
+  position: relative;
+  min-height: 260px;
+  padding: 28px 24px 24px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  transition: transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+}
+
+.capability-card {
+  background: var(--bg-secondary);
+}
+
+.process-card {
+  background: var(--bg-primary);
+}
+
+.capability-card:hover,
+.process-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-blue);
+}
+
+.card-number {
+  display: block;
+  color: var(--accent-blue);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+}
+
+.card-mark {
+  position: absolute;
+  top: 24px;
+  right: 22px;
+  color: var(--accent-blue);
+}
+
+.capability-card h3,
+.process-card h3 {
+  margin: 58px 0 12px;
+  color: var(--text-primary);
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.process-card h3 {
+  margin-top: 48px;
+}
+
+.capability-card p,
+.process-card p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.7;
 }
 
 .credibility {
@@ -192,7 +290,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  color: var(--text-secondary);
+  color: var(--accent-blue);
   text-decoration: none;
   font-size: 14px;
   font-weight: 500;
@@ -200,7 +298,7 @@
 }
 
 .view-all:hover {
-  color: var(--text-primary);
+  color: #5eead4;
   gap: 12px;
 }
 
@@ -220,7 +318,7 @@
 
 .work-card:hover {
   transform: translateY(-4px);
-  border-color: var(--text-tertiary);
+  border-color: var(--accent-blue);
 }
 
 .work-card:hover h3 {
@@ -250,7 +348,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: var(--text-tertiary);
+  color: var(--accent-blue);
   margin-bottom: 12px;
   font-family: var(--font-mono);
 }
@@ -281,32 +379,6 @@
   background: var(--bg-primary);
 }
 
-.what-we-build h2 {
-  font-size: 42px;
-  font-weight: 600;
-  margin-bottom: 56px;
-  letter-spacing: -0.02em;
-}
-
-.build-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
-}
-
-.build-item h3 {
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 12px;
-  color: var(--text-primary);
-}
-
-.build-item p {
-  font-size: 14px;
-  color: var(--text-secondary);
-  line-height: 1.7;
-}
-
 .founder {
   padding: 120px 48px;
   background: var(--bg-secondary);
@@ -330,18 +402,18 @@
 
 .founder-link {
   display: inline-block;
-  color: var(--text-secondary);
+  color: var(--accent-blue);
   text-decoration: none;
   font-size: 14px;
-  font-weight: 500;
-  border-bottom: 1px solid var(--border-color);
+  font-weight: 600;
+  border-bottom: 1px solid var(--accent-blue);
   padding-bottom: 2px;
   transition: all 0.2s;
 }
 
 .founder-link:hover {
-  color: var(--text-primary);
-  border-color: var(--text-primary);
+  color: #5eead4;
+  border-color: #5eead4;
 }
 
 @media (max-width: 768px) {
@@ -369,11 +441,19 @@
     padding: 80px 24px;
   }
   
-  .philosophy h2,
+  .section-intro {
+    display: block;
+    margin-bottom: 36px;
+  }
+
+  .section-intro h2,
   .section-header h2,
-  .what-we-build h2,
   .founder h2 {
     font-size: 32px;
+  }
+
+  .section-intro > p {
+    margin-top: 18px;
   }
   
   .credibility-grid {
@@ -384,8 +464,15 @@
     grid-template-columns: 1fr;
   }
   
-  .build-grid {
+  .capability-grid,
+  .process-grid {
     grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .capability-card,
+  .process-card {
+    min-height: 0;
   }
 }
 

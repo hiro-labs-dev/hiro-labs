@@ -1,74 +1,86 @@
 import { useEffect } from 'react'
+import { ArrowRight, Check } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import './About.css'
+
+const principles = [
+  'Start with the problem, not a preselected solution.',
+  'Keep decisions visible and communication direct.',
+  'Build for the people who will use and maintain it.',
+]
 
 function About() {
   useEffect(() => {
-    document.title = 'About - Roddy Brown'
+    document.title = 'About - Hiro Labs'
   }, [])
 
   return (
     <div className="about">
       <div className="about-header">
         <div className="container">
-          <h1>About Me</h1>
-          <p>Full-stack engineer. Architecture-driven.</p>
+          <p className="about-eyebrow">About Hiro Labs</p>
+          <h1>A technical partner for work that needs to hold up.</h1>
+          <p className="about-lede">
+            Hiro Labs is a founder-led web and software studio for businesses that need a clearer, more useful digital presence.
+          </p>
         </div>
       </div>
 
-      <div className="about-content">
+      <main className="about-content">
         <div className="container">
+          <section className="about-intro" aria-labelledby="about-intro-title">
+            <h2 id="about-intro-title">Built for the work after launch</h2>
+            <p>
+              We partner with founders and business leaders on everything from polished business websites to
+              customer-facing systems, internal tools, and automation. The aim is practical progress: a clear
+              path forward, steady delivery, and digital work that remains useful as the business changes.
+            </p>
+          </section>
 
-          <section className="about-section founder-section">
-            <div className="founder-content">
-              <div className="founder-image">
-                <img src="/roddy.webp" alt="Roddy Brown" />
-              </div>
-              <div className="founder-text">
-                <h2>Roddy Brown</h2>
-                <p>
-                  I'm a senior software engineer with 9+ years building production systems 
-                  across insurance, government, healthcare, and media industries. I started my career building internal 
-                  tools and data pipelines, then moved into full-stack development, eventually leading engineering teams and 
-                  architecting systems from the ground up.
-                </p>
-                <p>
-                  My technical foundation spans backend architecture with Django and Python, frontend development with React 
-                  and TypeScript, database design and optimization with PostgreSQL, and cloud infrastructure on AWS. I've 
-                  built ETL pipelines processing millions of records daily, RESTful APIs serving real-time data to mobile 
-                  and web clients, and responsive interfaces that significantly improve user workflows.
-                </p>
-                <p>
-                  Beyond writing code, I've led cross-functional teams through full development lifecycles, mentored 
-                  junior engineers, transitioned legacy systems to modern architectures, and established CI/CD practices 
-                  that reduced deployment friction. My work includes help desk platforms, claims processing systems, 
-                  predictive analytics tools, real-time search implementations, secure field operation APIs, and statistical 
-                  visualization dashboards.
-                </p>
-                <p>
-                  I work directly with founders and business leaders who need production-grade 
-                  systems built right the first time. Every project is approached with architectural discipline, clear 
-                  documentation, and a focus on long-term maintainability over quick hacks.
-                </p>
-              </div>
+          <section className="founder-section" aria-labelledby="founder-title">
+            <div className="founder-image">
+              <img src="/roddy.webp" alt="Roddy Brown" />
+            </div>
+            <div className="founder-text">
+              <p className="section-label">The person behind the studio</p>
+              <h2 id="founder-title">Led by Roddy Brown</h2>
+              <p>
+                Roddy is a software engineer with more than nine years of experience building production
+                systems across insurance, government, healthcare, and media. He brings hands-on perspective
+                from the details that make a product work day to day: reliable data, clear interfaces,
+                thoughtful integrations, and dependable delivery.
+              </p>
+              <p>
+                That experience includes high-volume data pipelines, real-time APIs, internal tools, and
+                legacy-system migrations. More importantly, it means knowing when to keep a solution simple,
+                where to invest in foundations, and how to keep momentum without creating a mess for later.
+              </p>
             </div>
           </section>
 
-          <section className="about-section">
-            <h2>How I Work</h2>
-            <p>
-              I focus on pragmatic, production-grade solutions with clean architecture and proper documentation. 
-              Every project includes real deployment pipelines, monitoring, and integration with the business tools 
-              you already use.
-            </p>
-            <p>
-              My approach: understand the problem, build the right solution, ship it fast, and make it maintainable. 
-              I optimize database queries, implement CI/CD pipelines, and orchestrate cloud infrastructure on AWS 
-              to ensure high availability and cost efficiency.
-            </p>
+          <section className="about-principles" aria-labelledby="principles-title">
+            <div>
+              <p className="section-label">The approach</p>
+              <h2 id="principles-title">Clear thinking. Careful execution.</h2>
+            </div>
+            <div className="principles-list">
+              {principles.map((principle) => (
+                <p key={principle}><Check size={18} aria-hidden="true" />{principle}</p>
+              ))}
+            </div>
           </section>
 
+          <section className="about-cta" aria-labelledby="about-cta-title">
+            <div>
+              <h2 id="about-cta-title">Have a project taking shape?</h2>
+              <p>Let&apos;s turn the next good idea into a plan your team can move on.</p>
+            </div>
+            <Link to="/contact" className="about-cta-link">
+              Start a conversation <ArrowRight size={18} aria-hidden="true" />
+            </Link>
+          </section>
         </div>
-      </div>
+      </main>
     </div>
   )
 }
