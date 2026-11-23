@@ -232,7 +232,7 @@ function ClientQuestionnaire() {
         <div className="questionnaire-success">
           <CheckCircle size={64} />
           <h1>Thank you!</h1>
-          <p>Your responses have been submitted. I'll review everything and get back to you with a scope and pricing estimate.</p>
+          <p>Your responses have been submitted. Hiro Labs will review everything and follow up with a scope and pricing estimate.</p>
         </div>
       </div>
     )

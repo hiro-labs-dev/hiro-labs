@@ -1,23 +1,21 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import './NotFound.css'
+import '../site.css'
 
 function NotFound() {
   useEffect(() => {
-    document.title = '404 - Page Not Found'
+    document.title = 'not found · hiro labs'
   }, [])
 
   return (
-    <div className="not-found">
-      <div className="not-found-content">
-        <h1>404</h1>
-        <h2>Page Not Found</h2>
-        <p>The page you're looking for doesn't exist or has been moved.</p>
-        <Link to="/" className="btn-home">
-          Back to Home
-        </Link>
+    <section style={{ padding: '120px 0 140px' }}>
+      <div className="hl-w" style={{ display: 'flex', flexDirection: 'column', gap: 20, alignItems: 'flex-start' }}>
+        <span className="hl-eye">404</span>
+        <h1 className="hl-disp" style={{ margin: 0, fontSize: 'clamp(48px, 9vw, 96px)' }}>nothing here.</h1>
+        <p className="hl-lede" style={{ margin: 0 }}>the page you&apos;re looking for doesn&apos;t exist or has moved.</p>
+        <Link to="/" className="hl-btn hl-pri" style={{ color: 'var(--bg-primary)' }}>back to home</Link>
       </div>
-    </div>
+    </section>
   )
 }
 

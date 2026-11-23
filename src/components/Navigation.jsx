@@ -1,71 +1,53 @@
-import { useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
+import Logo from './Logo'
 import './Navigation.css'
 
-function Navigation() {
-  const location = useLocation()
-  const [isOpen, setIsOpen] = useState(false)
+const links = [
+  { to: '/products', label: 'products' },
+  { to: '/projects', label: 'client work' },
+  { to: '/#services', label: 'services' },
+  { to: '/#about', label: 'about' },
+  { to: '/contact', label: 'contact' },
+]
 
-  const isActive = (path) => location.pathname === path
+function Navigation() {
+  const { pathname, hash } = useLocation()
+  const [open, setOpen] = useState(false)
+
+  useEffect(() => { setOpen(false) }, [pathname, hash])
+
+  const isOn = (to) => (to.startsWith('/#') ? pathname === '/' && hash === to.slice(1) : pathname.startsWith(to))
 
   return (
-    <nav className="navigation">
-      <div className="nav-container">
-        <Link to="/" className="nav-logo">
-          Roddy Brown
+    <header className="hl-nav">
+      <div className="hl-w hl-nav-in">
+        <Link to="/" className="hl-brand" aria-label="hiro labs home">
+          <Logo />
+          <span>hiro labs</span>
         </Link>
-        
-        <button className="nav-toggle" onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
+        <nav className={`hl-nav-links ${open ? 'open' : ''}`} aria-label="Main" id="hl-menu">
+          {links.map((l) => (
+            <NavLink key={l.to} to={l.to} className={`hl-navl ${isOn(l.to) ? 'on' : ''}`}>
+              {l.label}
+            </NavLink>
+          ))}
+          <Link to="/contact" className="hl-btn hl-pri hl-nav-cta-m">start a project</Link>
+        </nav>
+        <Link to="/contact" className="hl-btn hl-pri hl-nav-cta">start a project</Link>
+        <button
+          type="button"
+          className="hl-nav-toggle"
+          aria-expanded={open}
+          aria-controls="hl-menu"
+          aria-label={open ? 'Close menu' : 'Open menu'}
+          onClick={() => setOpen(!open)}
+        >
+          {open ? <X size={22} /> : <Menu size={22} />}
         </button>
-
-        <div className={`nav-links ${isOpen ? 'open' : ''}`}>
-          <Link 
-            to="/" 
-            className={`nav-link ${isActive('/') ? 'active' : ''}`}
-            onClick={() => setIsOpen(false)}
-          >
-            Home
-          </Link>
-          <Link 
-            to="/projects" 
-            className={`nav-link ${isActive('/projects') ? 'active' : ''}`}
-            onClick={() => setIsOpen(false)}
-          >
-            Projects
-          </Link>
-          <Link 
-            to="/products" 
-            className={`nav-link ${isActive('/products') ? 'active' : ''}`}
-            onClick={() => setIsOpen(false)}
-          >
-            Products
-          </Link>
-          <Link 
-            to="/about" 
-            className={`nav-link ${isActive('/about') ? 'active' : ''}`}
-            onClick={() => setIsOpen(false)}
-          >
-            About
-          </Link>
-          <Link 
-            to="/resume" 
-            className={`nav-link ${isActive('/resume') ? 'active' : ''}`}
-            onClick={() => setIsOpen(false)}
-          >
-            Resume
-          </Link>
-          <Link 
-            to="/contact" 
-            className={`nav-link ${isActive('/contact') ? 'active' : ''}`}
-            onClick={() => setIsOpen(false)}
-          >
-            Contact
-          </Link>
-        </div>
       </div>
-    </nav>
+    </header>
   )
 }
 

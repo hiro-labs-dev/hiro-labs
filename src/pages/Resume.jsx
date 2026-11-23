@@ -395,7 +395,7 @@ function Resume() {
               </div>
             </div>
             <p className="hiro-description">
-              Building and shipping SaaS products, enterprise platforms, and client systems solo. I own every layer: UI/UX design, frontend, backend, infrastructure, DevOps, AI/ML integrations, and government data systems.
+              Hiro Labs builds and ships SaaS products, enterprise platforms, and client systems through a founder-led practice spanning UI/UX design, frontend, backend, infrastructure, DevOps, AI/ML integrations, and government data systems.
             </p>
             <div className="project-grid">
               {projects.map(project => (
