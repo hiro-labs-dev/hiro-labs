@@ -11,6 +11,15 @@
 .hl-prow-l { margin: 0; font-size: 16px; line-height: 1.6; color: var(--text-body); }
 .hl-prow-pts { display: flex; flex-direction: column; gap: 10px; padding: 0; }
 .hl-prow-pts .hl-li { color: var(--text-secondary); }
+.hl-prow-why { margin: 0; font-size: 14.5px; line-height: 1.65; color: var(--text-secondary); }
+.hl-prow-t > .hl-tag { margin-top: 6px; color: var(--accent-text); letter-spacing: .1em; }
+.hl-prow-fit { width: 100%; padding: 14px 16px; border-left: 2px solid var(--accent); background: var(--bg-secondary); }
+.hl-prow-fit .hl-tag { color: var(--accent-text); letter-spacing: .1em; }
+.hl-prow-fit p { margin: 6px 0 0; font-size: 14px; line-height: 1.6; color: var(--text-body); }
+.hl-jump { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+.hl-jump .hl-chip { height: 30px; padding: 0 14px; font-size: 12px; color: var(--text-body); text-decoration: none; }
+.hl-jump .hl-chip:hover { border-color: var(--accent-text); color: var(--accent-text); }
+.hl-tech svg { flex: none; }
 
 @media (max-width: 720px) {
   .hl-page-head { padding: 56px 0 24px; }

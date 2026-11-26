@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 import Logo from './Logo'
@@ -14,9 +14,10 @@ const links = [
 
 function Navigation() {
   const { pathname, hash } = useLocation()
-  const [open, setOpen] = useState(false)
-
-  useEffect(() => { setOpen(false) }, [pathname, hash])
+  // The menu is open only for the location it was opened on, so navigating closes it.
+  const here = pathname + hash
+  const [openAt, setOpenAt] = useState(null)
+  const open = openAt === here
 
   const isOn = (to) => (to.startsWith('/#') ? pathname === '/' && hash === to.slice(1) : pathname.startsWith(to))
 
@@ -42,7 +43,7 @@ function Navigation() {
           aria-expanded={open}
           aria-controls="hl-menu"
           aria-label={open ? 'Close menu' : 'Open menu'}
-          onClick={() => setOpen(!open)}
+          onClick={() => setOpenAt(open ? null : here)}
         >
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>

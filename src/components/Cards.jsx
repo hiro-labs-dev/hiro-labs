@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import TechChip from './TechChip'
 
 export function Check() {
   return (
@@ -42,7 +43,7 @@ export function ClientCard({ c }) {
       <div className="hl-card-body hl-client-body">
         <div className="hl-card-top"><span className="hl-pn" style={{ fontSize: 30 }}>{c.name}</span><Status>{c.status}</Status></div>
         <p className="hl-pd" style={{ fontSize: 15 }}>{c.line}</p>
-        <div className="hl-chips">{c.tags.map((t) => <span key={t} className="hl-chip">{t}</span>)}</div>
+        <div className="hl-chips">{c.tags.map((t) => <TechChip key={t} name={t} />)}</div>
       </div>
     </Link>
   )

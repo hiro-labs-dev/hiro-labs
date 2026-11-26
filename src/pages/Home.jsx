@@ -6,17 +6,65 @@ import '../site.css'
 import './Home.css'
 
 const services = [
-  { title: 'websites', text: 'fast, accessible sites with a cms your team can run.', points: ['marketing sites, content, seo', 'wagtail / headless cms'], icon: <><rect x="3" y="4" width="18" height="16" rx="1" /><path d="M3 9h18M8 4v5" /></> },
-  { title: 'web apps & platforms', text: 'custom software that fits how your business works.', points: ['dashboards, portals, marketplaces', 'payments, maps, integrations'], icon: <path d="M4 6h16M4 12h16M4 18h10" /> },
-  { title: 'ai tools', text: 'assistants and automations that do real work, with guardrails.', points: ['agents, search over your docs', 'openai / claude, model-agnostic'], icon: <path d="M12 3l2.5 5.5L20 11l-5.5 2.5L12 19l-2.5-5.5L4 11l5.5-2.5z" /> },
-  { title: 'mvp to launch', text: "from idea to a product in customers' hands, fast.", points: ['native mac + iphone apps', 'aws hosting, ci/cd, monitoring'], icon: <path d="M4 20L20 4M14 4h6v6" /> },
+  {
+    title: 'websites',
+    text: 'a site that looks like your business and that you can update yourself.',
+    value: 'change text, photos and events without calling a developer. fast on a phone, and easy for customers to find in search.',
+    points: ['company and marketing sites', 'event calendars, directories, more than one language'],
+    example: { name: 'common ground tampa', to: '/projects/common-ground-tampa', image: '/work/common-ground/hero.webp' },
+    icon: <><rect x="3" y="4" width="18" height="16" rx="1" /><path d="M3 9h18M8 4v5" /></>,
+  },
+  {
+    title: 'web apps & platforms',
+    text: 'custom software built around how your business already works.',
+    value: 'swap the spreadsheets and the pile of separate subscriptions for one tool your team and your customers sign in to.',
+    points: ['customer portals, dashboards, marketplaces', 'online payments, maps, booking'],
+    example: { name: 'nomadic influence', to: '/projects/nomadic-influence', image: '/work/nomadic-influence/hero.webp' },
+    icon: <path d="M4 6h16M4 12h16M4 18h10" />,
+  },
+  {
+    title: 'ai tools',
+    text: 'assistants that answer from your own documents and take on the busywork.',
+    value: 'staff find answers in seconds, with the source shown. a person approves anything that matters before it goes out.',
+    points: ['ask questions of your own files', 'automate repetitive tasks and drafts'],
+    example: { name: 'sakura', to: '/products#sakura', image: '/lab/sakura.webp' },
+    icon: <path d="M12 3l2.5 5.5L20 11l-5.5 2.5L12 19l-2.5-5.5L4 11l5.5-2.5z" />,
+  },
+  {
+    title: 'idea to launch',
+    text: 'turn an idea into a working product that real customers can use.',
+    value: 'get something real in front of customers to sell, test and learn from, with hosting and upkeep handled.',
+    points: ['web, mac and iphone apps', 'hosting, monitoring and updates after launch'],
+    example: { name: 'kite', to: '/products#kite', image: '/lab/kite.webp' },
+    icon: <path d="M4 20L20 4M14 4h6v6" />,
+  },
 ]
 
 const steps = [
-  ['01 · scope', 'start with the outcome', "what has to be true when we're done, and what we can leave out."],
-  ['02 · design', 'shape it together', 'flows and screens you can click before we build them.'],
-  ['03 · build', 'ship in small pieces', 'working software every week, reviewed with you.'],
-  ['04 · run', 'keep it running', 'hosting, monitoring and updates after launch.'],
+  {
+    n: '01', title: 'scope', head: 'start with the outcome',
+    text: "we talk through your business, who this is for, what has to work on day one and what can wait. if a simpler fix or an existing tool would do the job, we'll tell you.",
+    you: 'a written plan: what we build, what we leave out, and what it costs.',
+    need: 'a conversation or two, and examples of how you work today.',
+  },
+  {
+    n: '02', title: 'design', head: 'see it before we build it',
+    text: 'we turn the plan into screens you can click through on your laptop or phone, so you can change your mind while changes are cheap.',
+    you: 'a clickable prototype you can share with your team.',
+    need: 'honest feedback, and a decision-maker for sign-off.',
+  },
+  {
+    n: '03', title: 'build', head: 'ship in small pieces',
+    text: 'we build in short cycles. every week there is new, working software to try, not a status report.',
+    you: 'a private link to the latest version each week.',
+    need: 'a short weekly check-in to review and steer.',
+  },
+  {
+    n: '04', title: 'run', head: 'launch and keep it running',
+    text: 'we launch, then host, monitor and update it. when something needs fixing, you know who to call.',
+    you: 'a live product, monitoring, and code that belongs to you.',
+    need: 'access to accounts like your domain, and a heads-up when your business changes.',
+  },
 ]
 
 const stats = [
@@ -59,7 +107,7 @@ function Home() {
           <div className="hl-hero-art" aria-hidden="true">
             <div className="hl-panel hl-hero-a"><div className="hl-bar"><i /><i /><i /></div><img className="hl-shot" src="/lab/signal.webp" alt="" width="1440" height="900" /></div>
             <div className="hl-panel hl-hero-b"><div className="hl-bar"><i /><i /><i /></div><img className="hl-shot" src="/lab/mia.webp" alt="" width="1440" height="900" /></div>
-            <span className="hl-chip hl-hero-chip"><b />10+ products shipped</span>
+            <span className="hl-chip hl-hero-chip"><b />10+ products built</span>
           </div>
         </div>
       </section>
@@ -75,7 +123,7 @@ function Home() {
       <section id="products" className="hl-sec">
         <div className="hl-w">
           <div className="hl-head">
-            <div><span className="hl-eye">01 · in the lab</span><h2 className="hl-h2">our products</h2><p className="hl-lede">software we build, use every day, and put in front of real customers.</p></div>
+            <div><span className="hl-eye">01 · in the lab</span><h2 className="hl-h2">our products</h2><p className="hl-lede">products we design, build and run ourselves. each one shows what we can build for you.</p></div>
             <Link className="hl-btn hl-ghost" to="/products">all products →</Link>
           </div>
           <div className="hl-grid3">
@@ -95,20 +143,40 @@ function Home() {
 
       <section id="services" className="hl-sec">
         <div className="hl-w">
-          <span className="hl-eye">03 · services</span><h2 className="hl-h2">what we build for you</h2><p className="hl-lede">scoped to what the project actually needs. we stay through launch, and after.</p>
+          <span className="hl-eye">03 · services</span><h2 className="hl-h2">what we build for you</h2><p className="hl-lede">four kinds of work, each with a real project behind it. we build what the project needs, and we stay on after launch.</p>
           <div className="hl-grid4">
             {services.map((s) => (
               <div key={s.title} className="hl-panel hl-svc">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5eead4" strokeWidth="1.6" aria-hidden="true">{s.icon}</svg>
                 <h3>{s.title}</h3>
                 <p>{s.text}</p>
+                <p className="hl-svc-val">{s.value}</p>
                 <ul>{s.points.map((pt) => <li key={pt} className="hl-li"><Check />{pt}</li>)}</ul>
+                <Link className="hl-svc-ex" to={s.example.to}>
+                  <img src={s.example.image} alt="" loading="lazy" width="1440" height="900" />
+                  <span><span className="hl-tag">example</span>{s.example.name} →</span>
+                </Link>
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section id="process" className="hl-sec hl-process">
+        <div className="hl-w">
+          <span className="hl-eye">how it works</span><h2 className="hl-h2">from first call to launch</h2>
+          <p className="hl-lede">you don&apos;t need to know the technical side. at every step you&apos;ll know what we&apos;re doing, why, and what you get.</p>
           <ol className="hl-steps">
-            {steps.map(([n, b, t]) => (
-              <li key={n} className="hl-step"><span className="n">{n}</span><b>{b}</b><span>{t}</span></li>
+            {steps.map((st) => (
+              <li key={st.n} className="hl-step">
+                <span className="n">{st.n} · {st.title}</span>
+                <b>{st.head}</b>
+                <p>{st.text}</p>
+                <dl>
+                  <dt>you get</dt><dd>{st.you}</dd>
+                  <dt>we need from you</dt><dd>{st.need}</dd>
+                </dl>
+              </li>
             ))}
           </ol>
         </div>
@@ -120,8 +188,9 @@ function Home() {
           <div className="hl-about-copy">
             <span className="hl-eye">04 · about</span>
             <h2 className="hl-h2" style={{ margin: 0 }}>founded by<br />roddy brown</h2>
-            <p className="hl-lede" style={{ margin: 0 }}>a senior software engineer in tampa bay with 9+ years shipping production software, from insurance claims and real-estate search to state traffic systems. hiro labs is where he builds products end to end, and builds them for clients.</p>
-            <div className="hl-hero-btns"><a className="hl-btn hl-ghost" href="https://roddy.hiro-labs.dev">meet roddy →</a><a className="hl-btn hl-ghost" href="https://github.com/roddy-devs">github</a></div>
+            <p className="hl-lede" style={{ margin: 0 }}>roddy grew up in okinawa, japan, and has spent 9+ years shipping production software. he led engineering teams at acceptance insurance and lucent group, where he built a statewide help-desk platform for the florida department of transportation, then built real-estate search over more than 100 million records at real geeks.</p>
+            <p className="hl-lede" style={{ margin: 0 }}>hiro labs is where he builds products end to end. mia, juno, signal and kite each started as a problem he wanted solved, and client work gets the same care. you work directly with the person designing and building your project, from the first call through launch and after.</p>
+            <div className="hl-hero-btns"><a className="hl-btn hl-ghost" href="https://roddy.hiro-labs.dev">portfolio & live demos →</a><a className="hl-btn hl-ghost" href="https://github.com/roddy-devs">github</a></div>
           </div>
         </div>
       </section>
@@ -130,7 +199,7 @@ function Home() {
         <div className="hl-w hl-contact">
           <div><span className="hl-eye">05 · contact</span><h2 className="hl-disp hl-contact-h">have something<br /><span className="hl-accent">to build?</span></h2></div>
           <div className="hl-panel hl-contact-box">
-            <p>tell us about the project. a few details help us come back with a real plan, not a guess.</p>
+            <p>tell us about the project. a few details help us come back with a real plan.</p>
             <Link className="hl-btn hl-pri" to="/contact" style={{ alignSelf: 'flex-start' }}>start a project</Link>
             <div className="hl-tag" style={{ fontSize: 12.5 }}>or email <a href="mailto:roddy@hiro-labs.dev">roddy@hiro-labs.dev</a></div>
           </div>

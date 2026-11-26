@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { clients } from '../data/site'
 import { Frame, Status } from '../components/Cards'
+import TechChip from '../components/TechChip'
 import NotFound from './NotFound'
 import '../site.css'
 import './Products.css'
@@ -96,7 +97,7 @@ function ProjectDetail() {
               </div>
             ))}
           </div>
-          <div className="hl-chips" style={{ marginTop: 28 }}>{c.stack.map((s) => <span key={s} className="hl-chip">{s}</span>)}</div>
+          <div className="hl-chips" style={{ marginTop: 28 }}>{c.stack.map((s) => <TechChip key={s} name={s} />)}</div>
         </div>
       </section>
 

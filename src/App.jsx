@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation, useParams } from 'react-router-dom'
-import { useEffect } from 'react'
+import { lazy, Suspense, useEffect } from 'react'
 import Navigation from './components/Navigation'
 import Footer from './components/Footer'
 import Home from './pages/Home'
@@ -8,15 +8,16 @@ import ProjectDetail from './pages/ProjectDetail'
 import Products from './pages/Products'
 import Contact from './pages/Contact'
 import NotFound from './pages/NotFound'
-import NIRoadmap from './pages/NIRoadmap'
-import Invoice from './pages/Invoice'
-import InvoiceLookup from './pages/InvoiceLookup'
-import InvoiceAdmin from './pages/InvoiceAdmin'
-import ClientQuestionnaire from './pages/ClientQuestionnaire'
-import QuestionnaireSubmissions from './pages/QuestionnaireSubmissions'
-import ServiceAgreement from './pages/ServiceAgreement'
-import ITSDemo from './pages/ITSDemo'
-import LOrdinateur from './pages/LOrdinateur'
+// Standalone pages (invoices, agreements, demos) load on demand, so the marketing pages skip their pdf libraries.
+const NIRoadmap = lazy(() => import('./pages/NIRoadmap'))
+const Invoice = lazy(() => import('./pages/Invoice'))
+const InvoiceLookup = lazy(() => import('./pages/InvoiceLookup'))
+const InvoiceAdmin = lazy(() => import('./pages/InvoiceAdmin'))
+const ClientQuestionnaire = lazy(() => import('./pages/ClientQuestionnaire'))
+const QuestionnaireSubmissions = lazy(() => import('./pages/QuestionnaireSubmissions'))
+const ServiceAgreement = lazy(() => import('./pages/ServiceAgreement'))
+const ITSDemo = lazy(() => import('./pages/ITSDemo'))
+const LOrdinateur = lazy(() => import('./pages/LOrdinateur'))
 import './App.css'
 import './site.css'
 
@@ -94,7 +95,9 @@ function App() {
     <Router>
       <div className="app">
         <ScrollToTop />
-        <AppLayout />
+        <Suspense fallback={null}>
+          <AppLayout />
+        </Suspense>
       </div>
     </Router>
   )

@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { products } from '../data/site'
 import { Check, Frame, Status } from '../components/Cards'
+import TechChip from '../components/TechChip'
 import '../site.css'
 import './Products.css'
 
@@ -24,7 +25,8 @@ function Products() {
         <div className="hl-w">
           <span className="hl-eye">in the lab</span>
           <h1 className="hl-disp hl-page-h">our products</h1>
-          <p className="hl-lede">software we build, use every day, and put in front of real customers. each one started as a problem we had ourselves.</p>
+          <p className="hl-lede">products we design, build and run ourselves. some are in daily use; others are on their way to their first customers. each one started as a problem we wanted solved, and each shows what we can build for you.</p>
+          <nav className="hl-jump" aria-label="Products">{products.map((p) => <a key={p.id} className="hl-chip" href={`#${p.id}`}>{p.name}</a>)}</nav>
         </div>
       </section>
 
@@ -37,8 +39,11 @@ function Products() {
                 <Status tone={p.tone}>{p.status}</Status>
                 <h2 className="hl-prow-n">{p.name}</h2>
                 <p className="hl-prow-l">{p.line}</p>
+                <p className="hl-prow-why">{p.problem}</p>
+                <span className="hl-tag">what it does</span>
                 <ul className="hl-prow-pts">{p.points.map((pt) => <li key={pt} className="hl-li"><Check />{pt}</li>)}</ul>
-                <div className="hl-chips">{p.stack.map((s) => <span key={s} className="hl-chip">{s}</span>)}</div>
+                <div className="hl-prow-fit"><span className="hl-tag">for your business</span><p>{p.fit}</p></div>
+                <div className="hl-chips" aria-label="built with">{p.stack.map((s) => <TechChip key={s} name={s} />)}</div>
               </div>
             </article>
           ))}
